@@ -2,7 +2,12 @@
 
 module HelloProject
   def self.hello
-    print "hello\n"
+    print "hello world\n"
+  end
+  def hello
+    print "hello git\n"
   end
 end
+
+# HelloProject.hello
 
