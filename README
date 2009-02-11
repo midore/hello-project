@@ -3,13 +3,92 @@ hello-project
 this is test.
 
 2009.02.07
-参考になる。
 http://www.hasta-pronto.org/archives/2006/12/10-2203.php
 
 2009.02.09
 http://www8.atwiki.jp/git_jp/pub/Documentation.ja/tutorial.html
 http://www8.atwiki.jp/git_jp/pub/Documentation.ja/tutorial-2.html
 http://www8.atwiki.jp/git_jp/pub/Documentation.ja/user-manual.html
+
+# global config
+# http://github.com/guides/git-cheat-sheet
+
+% cd ~/
+% git config --global user.name "midore"
+% git config --global user.email "midorex@gmail.com"
+% cat .gitconfig
+[user]
+        email = midorex@gmail.com
+        name = midore
+
+# http://github.com/guides/setting-up-a-remote-repository-using-github-and-osx
+
+% ssh-keygen -C "midore@midore.local"
+
+# ssh connect
+% ssh git@github.com
+# =>
+ Hi midore! You've successfully authenticated, but GitHub does not provide shell access.
+                                                                                       debug1: channel 0: free: client-session, nchannels 1
+Connection to github.com closed.
+
+
+# in Safari.app  login github.com/midore and make new project. project name is "hello-project"
+# 新しいプロジェクトを作ると、その後何をすべきかを示すページが表示される。それに従う
+
+% git config --global github.token xxxxxxxxxxxxxxxx
+% cat .gitconfig
+[github]
+        user = midore
+        token = xxxxxxxxxxx
+
+[user]
+        email = midorex@gmail.com
+        name = midore
+
+# in Terminal.app
+
+% mkdir hello-project
+% cd hello-project
+% touch README
+# edit README
+% git add README
+
+# commit
+% git commit -m "first commit hello-project"
+
+# push
+% git remote add origin git@github.com:midore/hello-project.git
+% git push origin master
+Counting objects: 4, done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 358 bytes, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To git@github.com:midore/hello-project.git
+ * [new branch]      master -> master
+
+
+# edit file
+% cd hello-project
+% git add filename
+% git commit -m "second commit"
+% git push origin master
+
+
+# remove file 
+% git rm filename
+% git status
+% git tag v0.0.2
+% git tag -l
+% git commit -m "v0.0.2"
+% git ls-files
+README
+hello.rb
+
+# archive
+
+% cd .git
+% git archive --format=tar --prefix=hello-project-v0.0.2/ v0.0.2 | gzip > hello-project-v0.0.2.tar.gz
 
 
 
