@@ -78,14 +78,14 @@ To git@github.com:midore/hello-project.git
 # remove file 
 % git rm filename
 % git status
-% git tag v0.0.2
-% git tag -l
 % git commit -m "v0.0.2"
 % git ls-files
 README
 hello.rb
 
 # archive
+% git tag v0.0.2
+% git tag -l
 
 % cd .git
 % git archive --format=tar --prefix=hello-project-v0.0.2/ v0.0.2 | gzip > hello-project-v0.0.2.tar.gz
